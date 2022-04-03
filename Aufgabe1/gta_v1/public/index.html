@@ -28,7 +28,22 @@
             <!-- ############### VS1Lab 1a Form 1 Start -->
             <form id="tag-form" action="/tagging" method="post">
 
-                <!-- ... your code here ... -->
+                <fieldset>
+                    <legend>Add a new Geo Tag</legend>
+                    <label for="tag_latitude">Latitude</label><br>
+                    <input type="text" placeholder="lagtitude of the tag" id ="tag_latitude"  name="tag_latitude"  value="49.01379" readonly/><br>
+                    
+                    <label for="tag_longitude">Longitude</label><br>
+                    <input type="text" placeholder="longitude of the tag" id ="tag_longitude"  name="tag_longitude"value="8.404435" readonly/><br>
+
+                    <label for="tag-name">Name:</label><br>
+                    <input type="text" pattern="[A-z]{1,}" placeholder="e.g. Moltke Mensa" id ="tag_name"  name="tag_name" required maxlength=10 /><br>
+                    
+                    <label for="tag-hashtag">Hashtag:</label><br>
+                    <input type="text" pattern="#[A-z]{1,}" placeholder="e.g. #tasty" id ="tag_hashtag"  name="tag_hashtag" maxlength=10 /><br>
+
+                    <input type="submit" value="Add Tag" >
+                </fieldset>
 
             </form>
             <!-- ############### VS1Lab 1a Form 1 End -->
@@ -41,7 +56,19 @@
             <!-- ############### VS1Lab 1a Form 2 Start -->
             <form class="discovery__search" id="discoveryFilterForm" action="/discovery" method="post">
 
-                <!-- ... your code here ... -->
+                <fieldset>
+                    <legend>Search</legend>
+                    
+                    <label for="searchterm">Search term or keywords:</label><br>
+                    <input type="search" id="searchterm" name="searchterm" placeholder="e.g. Mensa"><br>
+
+                    <input type="hidden" id="searchterm" name="searchterm" value="searchterm">
+                    <input type="hidden" id="lagtitude" name="tag_latitude" value="49.01379">
+                     <input type="hidden" id="longitude" name="tag_longitude" value="8.404435">
+
+                    <input type="submit" value="Search">
+        
+                </fieldset>
 
             </form>
             <!-- ############### VS1Lab 1a Form 2 End -->
