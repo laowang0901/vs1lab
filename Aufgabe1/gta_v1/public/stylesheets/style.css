@@ -22,7 +22,10 @@ html {
 
 
 /* Variables (example: see declaration for "a" below) */
-
+/* :root--> this selector allows you to target the highest-level “parent” element 
+in the DOM, or document tree. 
+It is defined as a “structural pseudo-class”, meaning it is used to style content
+ based on its relationship with parent and sibling content */
 :root {
   --link-color: #00B7FF;
   --background-color: #efefef;
@@ -52,7 +55,7 @@ header {
   border-bottom: 1px solid lightgray;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; 
   align-items: center;
 
 }
@@ -127,7 +130,7 @@ footer {
 /*Styles for Header Component */
 
 
-img.header__image{
+.header__image{
   width: 50px;
 }
 
@@ -137,27 +140,29 @@ img.header__image{
 
 
 /*Styles for Main Component */
-/*.main {
-  column-gap: 0px;
-  justify-content: space-around;
-}*/
 
 fieldset {
-  padding: 10px;
+  padding: 15px;
+  border-color:#cdcdcd;
 }
 
 legend {
-  font-size: larger;
-  padding: 10px;
+  font-size: medium;
+  padding: 10px;    /*creates a gap between legend and the lines*/
+  font-weight: bold;
 }
 
 label {
   color: grey;
+  font-size:medium;
 }
 
 input {
-  display: block;
+  display: block;   /*that way we don't need to use <br> after each element*/
   width: 100%;
+  min-width: 130px;
+  max-width: 250px;
+
   padding: 10px;
   margin-bottom: 12px;
   margin-top: 4px;
@@ -170,17 +175,23 @@ input:read-only {
 
 button {
   width: 100%;
+  min-width: 130px;
+  max-width: 250px;
+
   padding: 10px;
   border: 1px solid lightgray;
+  font-weight: bold;
+  font-size:small;
 }
 
 .disabled {
   color: darkgray;
 }
 
-/* ### TODO ### Styles for Tagging component */
-section h2 {
-  padding-bottom: 10px;
+/*Styles for Tagging component */
+h2 {
+  font-size: large;
+  margin-bottom: 10px;
 }
 
 .main__tagging{
@@ -188,16 +199,13 @@ section h2 {
 }
 
 
-/* ### TODO ### Styles for Discovery component */
+/*Styles for Discovery component */
  .main__discovery {
-   padding: 35px;
+  padding: 35px 35px 35px 0px;      /*padding-left: 0px*/
  }
 
  .discovery__wrapper {
   padding-top: 20px;
- }
- 
- .discovery__taglist {
  }
 
  .discovery__map {
@@ -206,12 +214,14 @@ section h2 {
 
  #mapView {
   width: 100%;
+  /*max-width: 100%    -->the image will scale down if it has to, 
+  but never scale up to be larger than its original size*/
  }
 
  .discovery__results > li{
-  padding: 10px;
-  margin-bottom: 10px;
-  margin-right: 10px;
+  padding: 20px;
+  margin-bottom: 15px;
+  margin-right: 20px;
   list-style: none;
   font-weight: bold;
   color: darkcyan;
@@ -219,7 +229,7 @@ section h2 {
   background: lightgray;
  }
 
- main span {
+ main span {          /*Result map*/
   color: darkgray;
   display: block;
  }
@@ -235,7 +245,17 @@ footer span {
 
 /*Media Queries */
 
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 600px){   /*activate when the screen size is smaller than 600px*/
+  input {
+    max-width: none;
+    width: 100%;
+  }
+
+  button {
+    max-width: none;
+    width: 100%;
+  }
+
   .row {
     flex-direction: column;
   } 
@@ -245,10 +265,11 @@ footer span {
   }
 
   .main__discovery {
+    padding: 35px;
     width: 100%;
   }
 
-  .discovery__results > li{
+  .discovery__taglist{
     width: 100%;
   }
 
