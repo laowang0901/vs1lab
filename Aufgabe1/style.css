@@ -46,42 +46,64 @@ a {
 
 /* ### TODO ### Styles for other HTML elements */
 
-input{
-  width: 120px;
-  height: 20px;
+input {
+  display: block; /*that way we don't need to use <br> after each element*/
+  width: 170px;
+  height: 30px;
+  margin-bottom: 10px;
 }
 
-button{
-  width: 150px;
-  height: 25px;
-}
-
-
-.header__image{
-  display: flex;
-  width: 30px;
-  align-items:center ;
-}
-
-.header__title{
-
-  font-size: 36pt;
-  text-align: center;
-  
-}
-
-.header__navigation{
-text-align:right;
-
-
-}
-
-.footer{
-  text-align:left; 
+label{
+  font-size:small;
+  color: #666;
+  text-align: left;
 }
 
 
+fieldset{
+  padding-left: 15px; /*also pushes the add new GeoTag/Search legends to left*/
+  padding-right: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
 
+fieldset > legend{
+  border-color: #cdcdcd;
+  font-weight: bold;
+  font-size: small;
+}
+
+
+button {
+  align-items: flex-end;
+  width: 170px;
+  height: 30px;
+  font-weight: bold;
+  font-size:x-small;
+}
+
+h2{
+  font-size: medium;
+  margin-bottom: 15px;
+}
+
+li {
+  list-style-type: none;
+  font-weight: bold;
+  font-size: smaller;
+  color:#00B7FF;
+  border: 1px solid #efefef;
+  background-color: #efefef;
+  border-width: 10px;
+  padding: 15px;
+  margin-bottom: 10px;
+  margin-right: 20px;
+}
+
+span{
+  font-size: smaller;
+}
 /* ... your code here ... */
 
 
@@ -144,20 +166,49 @@ text-align:right;
 
 
 /* ### TODO ### Styles for Header Component */
-.header{
-  display: flex block;
+
+.header {
+  display: flex;
   background-color: #efefef;
+  flex-direction:row;
+  flex-wrap:nowrap;
+  flex-flow:nowrap;
+  justify-content:space-evenly;
+  align-items: baseline;
+  column-gap:calc(25% - 1rem);
 }
 
+.header__image {
+  width: 40px;
+  margin: 30px;
+}
+
+.header__title {
+  font-size: 20pt;
+  margin: 30px;
+}
+
+.header__navigation {
+  margin: 30px;
+}
 
 /* ... your code here ... */
 
 
 /* ### TODO ### Styles for Main Component */
-.main{
-  display: flex block;
-  
-  
+.main {
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap:nowrap;
+  flex-flow:nowrap;
+  justify-content: space-around;
+  align-items: baseline;
+  align-content: center;
+  column-gap: 20px;
+  row-gap: 20px;
+  margin: 40px;
+  height: 817px;
 }
 
 /* ... your code here ... */
@@ -165,28 +216,58 @@ text-align:right;
 
 /* ### TODO ### Styles for Tagging component */
 
-.main__tagging tagging{
-  display: flex block;
-  
-  
+div.main__tagging .col-3 .row{
+  display: flex;
+  flex-direction: column;
 }
+
 /* ... your code here ... */
 
 
 /* ### TODO ### Styles for Discovery component */
 
-.discovery__search{
-  display: flex block;
+div.main__discovery .col-9 .row {
+  display: flex;
+  flex-direction: column;
 }
+
+div.discovery__search .col-9 .row {
+  display: flex;
+  flex-direction: row;
+}
+
+.discovery__wrapper{
+  display: flex;
+  
+  
+  
+  
+  
+}
+
+div.discovery__taglist .col-3 .row{
+  display: flex;
+  flex-direction: column;
+}
+
+div.discovery__map .col-6 .row {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
 
 /* ... your code here ... */
 
 
 /* ### TODO ### Styles for Footer Component */
-.footer{
-  display: flex block;
+.footer {
   background-color: #efefef;
-  height: 50px;
+  height: 70px;
+  display: flex;
+  align-items:center;
+  padding-left: 40px;
 }
 
 

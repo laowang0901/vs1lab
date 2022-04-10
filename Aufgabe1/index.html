@@ -17,84 +17,89 @@
 
     <header class="header">
 
-            <img src="./images/location.png" class="header__image"  alt="an image of a map and location">
-            <h1 class="header__title">GeoTagApp</h1>
-            <nav class="header__navigation">
-                <a href="#">About</a> | <a href="#">Help</a> | <a href="/">Home</a>
-            </nav>
+        <img src="./images/location.png" class="header__image" alt="an image of a map and location">
+        <h1 class="header__title">GeoTagApp</h1>
+        <nav class="header__navigation">
+            <a href="#">About</a> | <a href="#">Help</a> | <a href="/">Home</a>
+        </nav>
 
     </header>
 
 
 
     <main class="main">
-        <div class="row">
-        <div class="col-3">
         <section class="main__tagging tagging">
             <h2>Tagging</h2>
 
+
             <!-- ############### VS1Lab 1a Form 1 Start -->
+
             <form id="tag-form" action="/tagging" method="post">
-               
+                <div class="main__tagging tagging">
+
                 <fieldset>
                     <legend>Add a new GeoTag</legend>
-                    
-                    <label for = "latitude"> Latitude: </label> 
-                    <input type="text" id="latitude" name = "latitude" placeholder= "49.01379" disabled ><br>
-              
-                    <label for="longitude"> Longitude: </label>
-                    <input type="text" name="longitude" id="longitude" placeholder= "8.390071" disabled><br>
-               
-                    <label for="nameField"> Name: </label>
-                    <input type="text" name="nameField" id="nameField" required placeholder= "e.g. Central Berlin" maxlength="10" title="Max. 10 letters"  pattern="[A-Za-z]{1,10}"><br>
-                    
-                    <label for="hashtag"> Hashtag: </label>
-                    <input type="text" name="hashtag" id="hashtag" placeholder= "e.g. #ber" pattern= "[#]{1}[A-Za-z]{2,11}"  maxlength ="11" >
-                    
-                    <button type="button" id="addTagButton">Add Tag</button> 
-                    </fieldset>
 
+                    <label for="latitude"> Latitude: </label>
+                    <input type="text" id="latitude" name="latitude" placeholder="49.01379" disabled>
+
+                    <label for="longitude"> Longitude: </label>
+                    <input type="text" name="longitude" id="longitude" placeholder="8.390071" disabled>
+
+                    <label for="nameField"> Name: </label>
+                    <input type="text" name="nameField" id="nameField" placeholder="e.g. Central Berlin" maxlength="10"
+                        title="Max. 10 letters" pattern="[A-Za-z]{1,10}" required>
+                    <!--Title: When cursor on the name section, it says what type of information is necessary like "Max. 10 letters"-->
+
+                    <label for="hashtag"> Hashtag: </label>
+                    <input type="text" name="hashtag" id="hashtag" placeholder="e.g. #ber"
+                        pattern="[#]{1}[A-Za-z]{2,11}" maxlength="11">
+
+                    <button type="button" id="addTagButton">Add Tag</button>
+                </fieldset>
+                </div>
                 <!-- ... your code here ... -->
 
             </form>
+
+
             <!-- ############### VS1Lab 1a Form 1 End -->
 
         </section>
-    </div>
 
-    <div class="col-9">
 
         <section class="main__discovery discovery">
             <h2 class="discovery__title">Discovery</h2>
 
             <!-- ############### VS1Lab 1a Form 2 Start -->
-            <form class="discovery__search" id="discoveryFilterForm" action="/discovery" method="post">
+            
 
-                <fieldset>
-                    <legend>Search</legend>
-                    
-                    <label for = "searchTerm"> Search term or keywords: </label><br>
-                    <input type="text" id="searchTerm" name = "searchTerm" placeholder= "e.g. Berlin"><br>
-                   
-                    <button type="button" id="searchButton">Search</button> 
-
-                    <label for = "latitude"> </label>
-                    <input type="hidden" id="latitude" name = "latitude" placeholder= "49.01379" disabled> <br>
+                <form class="discovery__search" id="discoveryFilterForm" action="/discovery" method="post">
+                    <div class="discovery__search">
 
 
-                    <label for="longitude"> </label>
-                    <input type="hidden" name="longitude" id="longitude" placeholder= "8.390071" disabled>
+                    <fieldset>
+
+                        <legend>Search</legend>
+
+                        <label for="searchTerm"> Search term or keywords: </label>
+                        <input type="text" id="searchTerm" name="searchTerm" placeholder="e.g. Berlin">
+
+                        <button type="button" id="searchButton">Search</button>
 
 
-            </fieldset>
+                        <input type="hidden" id="latitudeDisco" name="latitudeDisco" disabled>
+                        <input type="hidden" name="longitudeDisco" id="longitudeDisco" disabled>
 
-               
-               
-               
+                    </fieldset>
+                </div>
 
-                <!-- ... your code here ... -->
+                    <!-- ... your code here ... -->
 
-            </form>
+                </form>
+
+            
+
             <!-- ############### VS1Lab 1a Form 2 End -->
 
             <div class="discovery__wrapper">
@@ -108,25 +113,22 @@
                 <div class="discovery__map">
                     <img src="./images/mapview.jpg" alt="a map with locations" id="mapView" />
                     <span>Result map</span>
+
                 </div>
             </div>
+
+
         </section>
-        </div>
-        
-</div>
+
     </main>
-    
+
 
 
 
     <footer class="footer">
-        <div class="row">
-            <div class="col-6">
+
         <span>(c) 2021/22 HKA_IWI_VSYS</span>
-    </div>
-    <div class="col-6">
-        </div>
-</div>
+
     </footer>
 
 
