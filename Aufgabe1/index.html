@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<!-- File origin: VS1LAB A1a -->
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoTagApp</title>
+    <link rel="stylesheet" href="./stylesheets/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+
+    <header class="header">
+
+            <img src="./images/location.png" class="header__image"  alt="an image of a map and location">
+            <h1 class="header__title">GeoTagApp</h1>
+            <nav class="header__navigation">
+                <a href="#">About</a> | <a href="#">Help</a> | <a href="/">Home</a>
+            </nav>
+
+    </header>
+
+
+
+    <main class="main">
+        <div class="row">
+        <div class="col-3">
+        <section class="main__tagging tagging">
+            <h2>Tagging</h2>
+
+            <!-- ############### VS1Lab 1a Form 1 Start -->
+            <form id="tag-form" action="/tagging" method="post">
+               
+                <fieldset>
+                    <legend>Add a new GeoTag</legend>
+                    
+                    <label for = "latitude"> Latitude: </label> 
+                    <input type="text" id="latitude" name = "latitude" placeholder= "49.01379" disabled ><br>
+              
+                    <label for="longitude"> Longitude: </label>
+                    <input type="text" name="longitude" id="longitude" placeholder= "8.390071" disabled><br>
+               
+                    <label for="nameField"> Name: </label>
+                    <input type="text" name="nameField" id="nameField" required placeholder= "e.g. Central Berlin" maxlength="10" title="Max. 10 letters"  pattern="[A-Za-z]{1,10}"><br>
+                    
+                    <label for="hashtag"> Hashtag: </label>
+                    <input type="text" name="hashtag" id="hashtag" placeholder= "e.g. #ber" pattern= "[#]{1}[A-Za-z]{2,11}"  maxlength ="11" >
+                    
+                    <button type="button" id="addTagButton">Add Tag</button> 
+                    </fieldset>
+
+                <!-- ... your code here ... -->
+
+            </form>
+            <!-- ############### VS1Lab 1a Form 1 End -->
+
+        </section>
+    </div>
+
+    <div class="col-9">
+
+        <section class="main__discovery discovery">
+            <h2 class="discovery__title">Discovery</h2>
+
+            <!-- ############### VS1Lab 1a Form 2 Start -->
+            <form class="discovery__search" id="discoveryFilterForm" action="/discovery" method="post">
+
+                <fieldset>
+                    <legend>Search</legend>
+                    
+                    <label for = "searchTerm"> Search term or keywords: </label><br>
+                    <input type="text" id="searchTerm" name = "searchTerm" placeholder= "e.g. Berlin"><br>
+                   
+                    <button type="button" id="searchButton">Search</button> 
+
+                    <label for = "latitude"> </label>
+                    <input type="hidden" id="latitude" name = "latitude" placeholder= "49.01379" disabled> <br>
+
+
+                    <label for="longitude"> </label>
+                    <input type="hidden" name="longitude" id="longitude" placeholder= "8.390071" disabled>
+
+
+            </fieldset>
+
+               
+               
+               
+
+                <!-- ... your code here ... -->
+
+            </form>
+            <!-- ############### VS1Lab 1a Form 2 End -->
+
+            <div class="discovery__wrapper">
+                <div class="discovery__taglist">
+                    <ul class="discovery__results" id="discoveryResults">
+                        <li>Castle (49.01379, 8.404435) #sight</li>
+                        <li>IWI (49.01379, 8.390071) #edu</li>
+                    </ul>
+                </div>
+
+                <div class="discovery__map">
+                    <img src="./images/mapview.jpg" alt="a map with locations" id="mapView" />
+                    <span>Result map</span>
+                </div>
+            </div>
+        </section>
+        </div>
+        
+</div>
+    </main>
+    
+
+
+
+    <footer class="footer">
+        <div class="row">
+            <div class="col-6">
+        <span>(c) 2021/22 HKA_IWI_VSYS</span>
+    </div>
+    <div class="col-6">
+        </div>
+</div>
+    </footer>
+
+
+
+</body>
+
+</html>
