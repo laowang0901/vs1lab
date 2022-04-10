@@ -34,15 +34,15 @@
                     <input type="text" placeholder="lagtitude of the tag" id ="tag_latitude"  name="tag_latitude"  value="49.01379" readonly/>
                     
                     <label for="tag_longitude">Longitude:</label><br>
-                    <input type="text" placeholder="longitude of the tag" id ="tag_longitude"  name="tag_longitude"value="8.404435" readonly/>
+                    <input type="text" placeholder="longitude of the tag" id ="tag_longitude"  name="tag_longitude" value="8.404435" readonly/>
 
-                    <label for="tag-name">Name:</label>
+                    <label for="tag_name">Name:</label>
                     <input type="text" pattern="[A-z]{1,}" placeholder="e.g. Moltke Mensa" id ="tag_name"  name="tag_name" required maxlength=10 />
                     
-                    <label for="tag-hashtag">Hashtag:</label><br>
-                    <input type="text" pattern="#[A-z]{1,}" placeholder="e.g. #tasty" id ="tag_hashtag"  name="tag_hashtag" maxlength=10 />
+                    <label for="tag_hashtag">Hashtag:</label><br>
+                    <input type="text" pattern="#[A-z]{1,}" placeholder="e.g. #tasty" id ="tag_hashtag"  name="tag_hashtag" maxlength=11 />
 
-                    <button type="submit">Add Tag</button>
+                    <button type="submit" id="Add_button">Add Tag</button>
                 </fieldset>
 
             </form>
@@ -61,12 +61,10 @@
                     
                     <label for="searchterm">Search term or keywords:</label>
                     <input type="search" id="searchterm" name="searchterm" placeholder="e.g. Mensa">
-
-                    <input type="hidden" id="searchterm" name="searchterm" value="searchterm">
                     <input type="hidden" id="lagtitude" name="tag_latitude" value="49.01379">
                     <input type="hidden" id="longitude" name="tag_longitude" value="8.404435">
 
-                    <button disabled type="submit">Search</button>
+                    <button disabled type="submit" id="search_button">Search</button>
         
                 </fieldset>
 
