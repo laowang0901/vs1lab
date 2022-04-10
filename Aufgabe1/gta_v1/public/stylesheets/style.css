@@ -163,7 +163,7 @@ input {
   min-width: 130px;
   max-width: 250px;
 
-  padding: 10px;
+  padding: 10px;                    /*bigger input area*/
   margin-bottom: 12px;
   margin-top: 4px;
 }
@@ -178,7 +178,7 @@ button {
   min-width: 130px;
   max-width: 250px;
 
-  padding: 10px;
+  padding: 10px;                    /*bigger button*/
   border: 1px solid lightgray;
   font-weight: bold;
   font-size:small;
@@ -205,7 +205,21 @@ h2 {
  }
 
  .discovery__wrapper {
-  padding-top: 20px;
+  margin-top: 20px;                
+ }
+
+ .discovery__taglist {
+  margin-right: 30px;               /*gap between taglist and map*/
+ }
+
+  .discovery__results > li{         /*the tag list area*/
+  padding: 20px;
+  margin-bottom: 15px;
+  list-style: none;
+  font-weight: bold;
+  color: darkcyan;
+  border: 1px solid darkgray;
+  background: lightgray;
  }
 
  .discovery__map {
@@ -216,17 +230,6 @@ h2 {
   width: 100%;
   /*max-width: 100%    -->the image will scale down if it has to, 
   but never scale up to be larger than its original size*/
- }
-
- .discovery__results > li{
-  padding: 20px;
-  margin-bottom: 15px;
-  margin-right: 20px;
-  list-style: none;
-  font-weight: bold;
-  color: darkcyan;
-  border: 1px solid darkgray;
-  background: lightgray;
  }
 
  main span {          /*Result map*/
