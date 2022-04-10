@@ -37,6 +37,7 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;    
   min-height: 100vh;
 }
 
@@ -44,9 +45,25 @@ a {
   color: var(--link-color);
 }
 
-/* ### TODO ### Styles for other HTML elements */
+/*Styles for other HTML elements */
 
-/* ... your code here ... */
+header { 
+  background: #2e354f;
+  padding: 20px;
+  border-bottom: 1px solid lightgray;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+footer {
+  background: #2e354f;
+  padding: 20px;
+  border-top: 1px solid lightgray;
+}
+
 
 
 /* Grid styles (no changes required) */
@@ -54,6 +71,7 @@ a {
 .row {
   width: 100%;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   flex: 1;
 }
@@ -107,31 +125,124 @@ a {
 }
 
 
-/* ### TODO ### Styles for Header Component */
-
-/* ... your code here ... */
+/*Styles for Header Component */
 
 
-/* ### TODO ### Styles for Main Component */
+img.header__image{
+  width: 50px;
+}
 
-/* ... your code here ... */
+.header__title {
+  color: white;
+}
 
+
+/*Styles for Main Component */
+
+
+legend {
+  margin: 10px;
+}
+
+label {
+  color: grey;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 12px;
+  margin-top: 4px;
+}
+
+input:read-only {
+  background: lightgrey;
+  border: 1px solid darkgray;  
+}
+
+button {
+  padding: 5px;
+  border: 1px solid lightgray;
+}
+
+.disabled {
+  color: darkgray;
+}
 
 /* ### TODO ### Styles for Tagging component */
+section h2 {
+  padding-bottom: 10px;
+}
 
-/* ... your code here ... */
-
+.main__tagging{
+  padding: 35px;
+}
 
 /* ### TODO ### Styles for Discovery component */
 
-/* ... your code here ... */
+ .main__discovery {
+    padding: 35px;
+ }
+
+ .discovery__wrapper {
+    padding-top: 20px;
+ }
+ .discovery__taglist {
+  /*width: 25%;*/
+ }
+ .discovery__map {
+  width: 100%;
+ }
+
+ #mapView {
+  width: 100%;
+ }
+
+ ul li{
+  margin: 10px;
+  padding: 10px;
+  list-style: none;
+  font-weight: bold;
+  color: darkcyan;
+  border: 1px solid darkgray;
+  background: lightgray;
+  min-width: 150px;
+ }
+
+ main span {
+  color: darkgray;
+  display: block;
+ }
 
 
 /* ### TODO ### Styles for Footer Component */
 
-/* ... your code here ... */
+footer span {
+  color: white;
+}
 
 
 /* ### TODO ### Media Queries */
 
-/* ... your code here ... */
+@media only screen and (max-width: 600px){
+  .row {
+    flex-direction: column;
+  } 
+
+  .main__tagging {
+    width: 100%;
+    /*justify-content: center;
+    align-items: center;*/
+  }
+
+  .main__discovery {
+    width: 100%;
+  }
+
+
+}
+
+fieldset {
+  padding: 8px;
+}
