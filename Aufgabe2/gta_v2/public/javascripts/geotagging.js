@@ -57,6 +57,7 @@ class LocationHelper {
             alert(error.message)
         });
     }
+
 }
 
 /**
@@ -98,13 +99,23 @@ class MapManager {
 }
 
 /**
- * TODO: 'updateLocation'
  * A function to retrieve the current location and update the page.
  * It is called once the page has been fully loaded.
  */
-// ... your code here ...
+
+function updateLocation(location){
+    console.log("Getting location: " + location.latitude + ", " + location.longitude);
+
+    document.getElementById("tag_latitude","latitude").value = location.latitude;
+    document.getElementById("tag_longitude","longitude").value = location.longitude;
+
+    let newMap = new MapManager("qLcGFWbvMErinkcPHNT3lOnenpAXPru0");
+    document.getElementById("mapView").src = newMap.getMapUrl(location.latitude,location.longitude);
+
+}
+
 
 // Wait for the page to fully load its DOM content, then call updateLocation
 document.addEventListener("DOMContentLoaded", () => {
-    alert("Please change the script 'geotagging.js'");
+    LocationHelper.findLocation(updateLocation);
 });
