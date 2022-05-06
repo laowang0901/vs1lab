@@ -222,7 +222,9 @@ h2 {
   background: lightgray;
  }
 
- .discovery__map {
+ .discovery__map {  
+  color: gray;
+  display: block;
   width: 100%;
  }
 
@@ -232,8 +234,8 @@ h2 {
   but never scale up to be larger than its original size*/
  }
 
- main span {          /*Result map*/
-  color: darkgray;
+ main > span {          /*Result map*/
+  color: lightgray;
   display: block;
  }
 

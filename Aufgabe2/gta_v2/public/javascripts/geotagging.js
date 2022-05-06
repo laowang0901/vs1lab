@@ -104,18 +104,29 @@ class MapManager {
  */
 
 function updateLocation(location){
-    console.log("Getting location: " + location.latitude + ", " + location.longitude);
+    //get method
+    let newLatitude = location.latitude;
+    let newLongitude =  location.longitude;
 
-    document.getElementById("tag_latitude","latitude").value = location.latitude;
-    document.getElementById("tag_longitude","longitude").value = location.longitude;
+    console.log("Getting location: " + newLatitude + ", " + newLongitude);
 
+    //updated the feld in tagging and hidden input in discovery
+    document.getElementById("tag_latitude").value = newLatitude;
+    document.getElementById("discovery_latitude").value = newLatitude;
+    document.getElementById("tag_longitude").value = newLongitude;
+    document.getElementById("discovery_longitude").value = newLongitude;
+
+    //get new map from mapQuest with API key and update the image
     let newMap = new MapManager("qLcGFWbvMErinkcPHNT3lOnenpAXPru0");
-    document.getElementById("mapView").src = newMap.getMapUrl(location.latitude,location.longitude);
+    let newMapUrl = newMap.getMapUrl(newLatitude,newLongitude);
+
+    document.getElementById("mapView").src = newMapUrl;
 
 }
 
 
 // Wait for the page to fully load its DOM content, then call updateLocation
 document.addEventListener("DOMContentLoaded", () => {
+    //updateLocation as callback function
     LocationHelper.findLocation(updateLocation);
 });
