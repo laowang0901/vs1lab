@@ -19,8 +19,9 @@ const router = express.Router();
  * 
  * TODO: implement the module in the file "../models/geotag.js"
  */
-// eslint-disable-next-line no-unused-vars
+
 const GeoTag = require('../models/geotag');
+
 
 /**
  * The module "geotag-store" exports a class GeoTagStore. 
@@ -28,8 +29,23 @@ const GeoTag = require('../models/geotag');
  * 
  * TODO: implement the module in the file "../models/geotag-store.js"
  */
-// eslint-disable-next-line no-unused-vars
+
+
 const GeoTagStore = require('../models/geotag-store');
+let store = new GeoTagStore();
+const {application} = require("express"); //what's this line doing?
+
+/**
+ * adding Tag example to the GeoTag Store
+ * TODO: might want to change
+ */
+/* const GeoTagExamples = require('../models/geotag-examples');
+let listExamples = GeoTagExamples.tagList;
+
+listExamples.forEach(element => {
+  let newGeoTag = new GeoTag(element[1], element[2], element[0], element[3])
+  store.addGeoTag(newGeoTag);
+}); */
 
 /**
  * Route '/' for HTTP 'GET' requests.
@@ -42,7 +58,7 @@ const GeoTagStore = require('../models/geotag-store');
 
 // TODO: extend the following route example if necessary
 router.get('/', (req, res) => {
-  res.render('index', { taglist: [] })
+  res.render('index', { taglist: []})
 });
 
 /**
@@ -60,7 +76,15 @@ router.get('/', (req, res) => {
  * by radius around a given location.
  */
 
-// TODO: ... your code here ...
+router.post('/tagging', (req, res) => {
+
+  let newTag = new GeoTag( parseFloat(req.body.tag_latitude), parseFloat(req.body.tag_longitude), req.body.tag_name, req.body.tag_hashtag)
+  store.addGeoTag(newTag)
+  let taglist = store.getNearbyGeoTags({latitude: newTag.latitude, longitude: newTag.longitude}, 10000);
+  console.log(taglist.length);
+  res.render('index', { taglist: taglist })
+
+});
 
 /**
  * Route '/discovery' for HTTP 'POST' requests.
@@ -78,6 +102,15 @@ router.get('/', (req, res) => {
  * by radius and keyword.
  */
 
-// TODO: ... your code here ...
+ router.post('/discovery', (req, res) => {
+
+  let myLatitude = Number(req.body.tag_latitude);
+  let myLongitude = Number(req.body.tag_longitude);
+
+  let taglist = store
+  .searchNearbyGeoTags(req.body.searchterm,{latitude: myLatitude, longitude: myLongitude}, 5)
+  res.render('index', { taglist: taglist })
+
+});
 
 module.exports = router;

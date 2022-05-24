@@ -113,6 +113,7 @@ function updateLocation(location){
     //updated the feld in tagging and hidden input in discovery
     document.getElementById("tag_latitude").value = newLatitude;
     document.getElementById("discovery_latitude").value = newLatitude;
+    
     document.getElementById("tag_longitude").value = newLongitude;
     document.getElementById("discovery_longitude").value = newLongitude;
 
