@@ -39,14 +39,14 @@ const {application} = require("express"); //what's this line doing?
  * adding Tag example to the GeoTag Store
  * TODO: might want to change
  */
-/* const GeoTagExamples = require('../models/geotag-examples');
+
+const GeoTagExamples = require('../models/geotag-examples');
 let listExamples = GeoTagExamples.tagList;
 
 listExamples.forEach(element => {
-  let newGeoTag = new GeoTag(element[1], element[2], element[0], element[3])
+  let newGeoTag = new GeoTag(element[1], element[2], element[0], element[3]);
   store.addGeoTag(newGeoTag);
-}); */
-
+});
 
 /**
  * Route '/' for HTTP 'GET' requests.
@@ -59,7 +59,8 @@ listExamples.forEach(element => {
 
 // TODO: extend the following route example if necessary
 router.get('/', (req, res) => {
-  res.render('index', { latitude: "", longitude: "" , taglist: []})
+
+  res.render('index', { latitude: "", longitude: "" , taglist: store.getAllGeoTags()})
 });
 
 /**
@@ -78,18 +79,17 @@ router.get('/', (req, res) => {
  */
 
 router.post('/tagging', (req, res) => {
-  
+
   const myLatitude = Number(req.body.tag_latitude);
   const myLongitude = Number(req.body.tag_longitude);
 
-  let newTag = new GeoTag( myLatitude, myLongitude, req.body.tag_name, req.body.tag_hashtag)
-  store.addGeoTag(newTag)
+  let newTag = new GeoTag( myLatitude, myLongitude, req.body.tag_name, req.body.tag_hashtag);
+  store.addGeoTag(newTag);
 
   //Show Tags around the newTag
-  let taglist = store.getNearbyGeoTags({latitude: newTag.latitude, longitude: newTag.longitude}, 10);
-  //console.log(taglist)
+  let taglist = store.getNearbyGeoTags({latitude: newTag.latitude, longitude: newTag.longitude}, 30);
   
-  res.render('index', { latitude: myLatitude, longitude: myLongitude, taglist: taglist })
+  res.render('index', { latitude: myLatitude, longitude: myLongitude, taglist: taglist });
 
 });
 
@@ -115,9 +115,9 @@ router.post('/tagging', (req, res) => {
   const myLongitude = Number(req.body.tag_longitude);
 
   let taglist = store
-  .searchNearbyGeoTags(req.body.searchterm,{latitude: myLatitude, longitude: myLongitude}, 10);
+  .searchNearbyGeoTags(req.body.searchterm,{latitude: myLatitude, longitude: myLongitude}, 20);
 
-  res.render('index', { taglist: taglist })
+  res.render('index', { latitude: myLatitude, longitude: myLongitude, taglist: taglist });
 
 });
 

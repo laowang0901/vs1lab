@@ -14,16 +14,19 @@ console.log("The geoTagging script is going to start...");
  * It is called once the page has been fully loaded.
  */
 
-//TODO: Aufagbe 3.2.2 b
-function updateLocation(location){
+//TODO: Aufagbe 3.3
+function updateLocation(){
+
+    //get new map from mapQuest with API key and update the image
+    let newMap = new MapManager("qLcGFWbvMErinkcPHNT3lOnenpAXPru0");
 
     //check if latitude and longitude are already in the fieldset
     if (document.getElementById("tag_latitude").value == "" && document.getElementById("tag_longitude").value == ""){  
 
         LocationHelper.findLocation((location) => {
 
-        let newLatitude = location.latitude;
-        let newLongitude =  location.longitude;
+        newLatitude = location.latitude;
+        newLongitude =  location.longitude;
 
         console.log("Getting location: " + newLatitude + ", " + newLongitude);
 
@@ -34,15 +37,23 @@ function updateLocation(location){
         document.getElementById("tag_longitude").value = newLongitude;
         document.getElementById("discovery_longitude").value = newLongitude;
 
-        //get new map from mapQuest with API key and update the image
-        let newMap = new MapManager("qLcGFWbvMErinkcPHNT3lOnenpAXPru0");
-        let newMapUrl = newMap.getMapUrl(newLatitude,newLongitude);
+        let newMapUrl = newMap.getMapUrl(newLatitude, newLongitude);
+        
+        document.getElementById("mapView").src = newMapUrl;
+
+
+        });
+    } else {
+
+        let taglist_json = document.getElementById("mapView").getAttribute("data-tags");
+        let tags = JSON.parse(taglist_json);
+
+        let newMapUrl = newMap.getMapUrl(document.getElementById("tag_latitude").value, document.getElementById("tag_longitude").value, tags);
 
         document.getElementById("mapView").src = newMapUrl;
 
-        });
-
     }
+
 
 }
 

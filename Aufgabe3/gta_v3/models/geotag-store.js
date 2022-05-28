@@ -29,6 +29,9 @@ class InMemoryGeoTagStore{
     // TODO: ... your code here ...
     #geoTagMemory = []; //an array that can't be accessed outside the store
 
+    getAllGeoTags(){
+        return this.#geoTagMemory;
+    }
 
     addGeoTag(geotag){
         this.#geoTagMemory.push(geotag);
