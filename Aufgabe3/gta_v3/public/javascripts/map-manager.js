@@ -23,7 +23,7 @@ class MapManager {
      * @param {number} zoom The map zoom, defaults to 11
      * @returns {string} URL of generated map
      */
-    getMapUrl(latitude, longitude, tags = [], zoom = 15) {
+    getMapUrl(latitude, longitude, tags = [], zoom = 11) {
         if (!this.#apiKey) {
             console.log("No API key provided.");
             return "images/mapview.jpg";

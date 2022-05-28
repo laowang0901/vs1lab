@@ -47,6 +47,7 @@ listExamples.forEach(element => {
   store.addGeoTag(newGeoTag);
 }); */
 
+
 /**
  * Route '/' for HTTP 'GET' requests.
  * (http://expressjs.com/de/4x/api.html#app.get.method)
@@ -77,11 +78,17 @@ router.get('/', (req, res) => {
  */
 
 router.post('/tagging', (req, res) => {
+  
+  const myLatitude = Number(req.body.tag_latitude);
+  const myLongitude = Number(req.body.tag_longitude);
 
-  let newTag = new GeoTag( parseFloat(req.body.tag_latitude), parseFloat(req.body.tag_longitude), req.body.tag_name, req.body.tag_hashtag)
+  let newTag = new GeoTag( myLatitude, myLongitude, req.body.tag_name, req.body.tag_hashtag)
   store.addGeoTag(newTag)
-  let taglist = store.getNearbyGeoTags({latitude: newTag.latitude, longitude: newTag.longitude}, 10000);
-  console.log(taglist.length);
+
+  //Show Tags around the newTag
+  let taglist = store.getNearbyGeoTags({latitude: newTag.latitude, longitude: newTag.longitude}, 10);
+  //console.log(taglist)
+  
   res.render('index', { taglist: taglist })
 
 });
@@ -104,11 +111,12 @@ router.post('/tagging', (req, res) => {
 
  router.post('/discovery', (req, res) => {
 
-  let myLatitude = Number(req.body.tag_latitude);
-  let myLongitude = Number(req.body.tag_longitude);
+  const myLatitude = Number(req.body.tag_latitude);
+  const myLongitude = Number(req.body.tag_longitude);
 
   let taglist = store
-  .searchNearbyGeoTags(req.body.searchterm,{latitude: myLatitude, longitude: myLongitude}, 5)
+  .searchNearbyGeoTags(req.body.searchterm,{latitude: myLatitude, longitude: myLongitude}, 10);
+
   res.render('index', { taglist: taglist })
 
 });
