@@ -59,7 +59,7 @@ listExamples.forEach(element => {
 
 // TODO: extend the following route example if necessary
 router.get('/', (req, res) => {
-  res.render('index', { taglist: []})
+  res.render('index', { latitude: "", longitude: "" , taglist: []})
 });
 
 /**
@@ -89,7 +89,7 @@ router.post('/tagging', (req, res) => {
   let taglist = store.getNearbyGeoTags({latitude: newTag.latitude, longitude: newTag.longitude}, 10);
   //console.log(taglist)
   
-  res.render('index', { taglist: taglist })
+  res.render('index', { latitude: myLatitude, longitude: myLongitude, taglist: taglist })
 
 });
 
